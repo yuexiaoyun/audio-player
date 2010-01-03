@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: audio-player\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-15 12:38+0100\n"
-"PO-Revision-Date: 2009-01-15 12:40+0100\n"
+"POT-Creation-Date: 2010-01-02 21:02+0100\n"
+"PO-Revision-Date: 2010-01-02 21:02+0100\n"
 "Last-Translator: Martin <martin@1pixelout.net>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -35,6 +35,11 @@ msgstr "下载音频文件"
 #, php-format
 msgid "Audio clip: Adobe Flash Player (version 9 or above) is required to play this audio clip. Download the latest version <a href=\"%s\" title=\"Download Adobe Flash Player\">here</a>. You also need to have JavaScript enabled in your browser."
 msgstr "音频片段：需要 Adobe Flash Player ( 9 或以上版本) 播放音频片段。 点击<a href=\"%s\" title=\"下载 Adobe Flash Player\">这里</a>下载最新版本。您需要开启浏览器的 JavaScript 支持。"
+
+#: ../audio-player.php:558
+#: ../audio-player.php:570
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
 
 #: ../php/options-panel.php:10
 #, php-format
@@ -397,4 +402,13 @@ msgstr "如果您选择此项，您的 mp3 文件的 URLs 将会被加密。这�
 #: ../php/options-panel.php:289
 msgid "Encode mp3 URLs"
 msgstr "加密 mp3 URLs"
+
+#: ../php/options-panel.php:294
+#, fuzzy
+msgid "Alternate content if Flash is not supported (experimental)"
+msgstr "文章摘要中替换的内容"
+
+#: ../php/options-panel.php:303
+msgid "Save Changes"
+msgstr ""
 

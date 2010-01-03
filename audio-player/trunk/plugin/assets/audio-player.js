@@ -17,20 +17,28 @@ var AudioPlayer = function () {
 		return document.all ? window[playerID] : document[playerID];
 	}
 	
+	function addListener (playerID, type, func) {
+			getPlayer(playerID).addListener(type, func);
+	}
+	
 	return {
 		setup: function (url, options) {
-	        playerURL = url;
-	        defaultOptions = options;
-	    },
+			playerURL = url;
+			defaultOptions = options;
+		},
 
 		getPlayer: function (playerID) {
 			return getPlayer(playerID);
 		},
-	    
-	    embed: function (elementID, options) {
+		
+		addListener: function (playerID, type, func) {
+			addListener(playerID, type, func);
+		},
+		
+		embed: function (elementID, options) {
 			var instanceOptions = {};
-	        var key;
-	        var so;
+			var key;
+			var so;
 			var bgcolor;
 			var wmode;
 			
@@ -38,14 +46,14 @@ var AudioPlayer = function () {
 			var flashVars = {};
 			var flashAttributes = {};
 	
-	        // Merge default options and instance options
+			// Merge default options and instance options
 			for (key in defaultOptions) {
-	            instanceOptions[key] = defaultOptions[key];
-	        }
-	        for (key in options) {
-	            instanceOptions[key] = options[key];
-	        }
-	        
+				instanceOptions[key] = defaultOptions[key];
+			}
+			for (key in options) {
+				instanceOptions[key] = options[key];
+			}
+			
 			if (instanceOptions.transparentpagebg == "yes") {
 				flashParams.bgcolor = "#FFFFFF";
 				flashParams.wmode = "transparent";
@@ -58,12 +66,12 @@ var AudioPlayer = function () {
 			
 			flashParams.menu = "false";
 			
-	        for (key in instanceOptions) {
+			for (key in instanceOptions) {
 				if (key == "pagebg" || key == "width" || key == "transparentpagebg") {
 					continue;
 				}
-	            flashVars[key] = instanceOptions[key];
-	        }
+				flashVars[key] = instanceOptions[key];
+			}
 			
 			flashAttributes.name = elementID;
 			flashAttributes.style = "outline: none";
@@ -74,7 +82,7 @@ var AudioPlayer = function () {
 			
 			
 			instances.push(elementID);
-	    },
+		},
 		
 		syncVolumes: function (playerID, volume) {	
 			currentVolume = volume;
@@ -91,15 +99,6 @@ var AudioPlayer = function () {
 			}
 
 			activePlayerID = playerID;
-			if (defaultOptions.onStart) {
-				defaultOptions.onStart(playerID, info);
-			}
-		},
-		
-		onStop: function (playerID) {
-			if (_options.onStop) {
-				_options.onStop();
-			}
 		},
 		
 		load: function (playerID, soundFile, titles, artists) {

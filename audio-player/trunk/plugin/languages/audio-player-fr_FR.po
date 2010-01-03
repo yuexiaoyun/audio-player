@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: audio-player\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-15 12:35+0100\n"
-"PO-Revision-Date: 2009-01-15 12:37+0100\n"
+"POT-Creation-Date: 2010-01-02 21:02+0100\n"
+"PO-Revision-Date: 2010-01-02 21:05+0100\n"
 "Last-Translator: Martin <martin@1pixelout.net>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -35,6 +35,11 @@ msgstr "Télécharger fichier audio"
 #, php-format
 msgid "Audio clip: Adobe Flash Player (version 9 or above) is required to play this audio clip. Download the latest version <a href=\"%s\" title=\"Download Adobe Flash Player\">here</a>. You also need to have JavaScript enabled in your browser."
 msgstr "Clip audio : Le lecteur Adobe Flash (version 9 ou plus) est nécessaire pour la lecture de ce clip audio. Téléchargez la dernière version <a href=\"%s\" title=\"Download Adobe Flash Player\">ici</a>. Vous devez aussi avoir JavaScript activé dans votre navigateur."
+
+#: ../audio-player.php:558
+#: ../audio-player.php:570
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
 
 #: ../php/options-panel.php:10
 #, php-format
@@ -397,4 +402,12 @@ msgstr "Activez pour coder les URLs de vos fichiers mp3. C'est l'unique protecti
 #: ../php/options-panel.php:289
 msgid "Encode mp3 URLs"
 msgstr "Coder les URLs des mp3"
+
+#: ../php/options-panel.php:294
+msgid "Alternate content if Flash is not supported (experimental)"
+msgstr "Contenu alternatif pour les extraits (expérimental)"
+
+#: ../php/options-panel.php:303
+msgid "Save Changes"
+msgstr ""
 
