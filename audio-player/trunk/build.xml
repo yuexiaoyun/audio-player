@@ -94,8 +94,8 @@
 		</copy>
 		
 		<condition property="swfExists">
-	    	<available file="${player.src.dir}/player.swf"/>
-	    </condition>
+			<available file="${player.src.dir}/player.swf"/>
+		</condition>
 		
 		<antcall target="-compileIfMissing"/>
 		
@@ -118,10 +118,10 @@
 		<delete dir="${build.dir}/assets/unc"/>
 		
 		<concat destfile="${build.dir}/assets/audio-player.js" append="true">
-	        <fileset dir="${plugin.src.dir}/assets">
-	        	<include name="lib/swfobject.js"/>
-	        </fileset>
-	    </concat>
+			<fileset dir="${plugin.src.dir}/assets">
+				<include name="lib/swfobject.js"/>
+			</fileset>
+		</concat>
 		
 		<zip destfile="${dist.dir}/audio-player.zip">
 			<zipfileset dir="${build.dir}" prefix="audio-player"/>
@@ -147,8 +147,8 @@
 		<delete dir="${build.dir}"/>
 		
 		<condition property="swfExists">
-	    	<available file="${player.src.dir}/player.swf"/>
-	    </condition>
+			<available file="${player.src.dir}/player.swf"/>
+		</condition>
 		
 		<antcall target="-compileIfMissing"/>
 		
@@ -179,10 +179,10 @@
 		<copy file="${build.dir}/audio-player.js" tofile="${build.dir}/audio-player-noswfobject.js"/>
 		
 		<concat destfile="${build.dir}/audio-player.js" append="true">
-	        <fileset dir="${plugin.src.dir}/assets">
-	        	<include name="lib/swfobject.js"/>
-	        </fileset>
-	    </concat>
+			<fileset dir="${plugin.src.dir}/assets">
+				<include name="lib/swfobject.js"/>
+			</fileset>
+		</concat>
 		
 		<copy file="${plugin.src.dir}/license.txt" todir="${build.dir}"/>
 		
@@ -200,9 +200,9 @@
 		<filter token="destFile" value="file:///${basedir}/source/player.swf"/>
 		<copy file="swfcompile.template" tofile="swfcompile.jsfl" filtering="true"/>
 		<replaceregexp file="swfcompile.jsfl" match="\\" replace="/" flags="g"/>
-	    <exec executable="${flash.exe}">
-	        <arg line="'${swfcompile.jsfl}'"/>
-	    </exec>
+		<exec executable="${flash.exe}">
+			<arg line="'${swfcompile.jsfl}'"/>
+		</exec>
 	</target>
 	
 	<target name="release" depends="build" description="Release and deploy new version">
