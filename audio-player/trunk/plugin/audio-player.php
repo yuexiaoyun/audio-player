@@ -3,13 +3,13 @@
 Plugin Name: Audio player
 Plugin URI: http://wpaudioplayer.com
 Description: Audio Player is a highly configurable but simple mp3 player for all your audio needs. You can customise the player's colour scheme to match your blog theme, have it automatically show track information from the encoded ID3 tags and more. Go to your Settings page to start configuring it.
-Version: 2.0
+Version: 2.0.1
 Author: Martin Laine
 Author URI: http://www.1pixelout.net
 
 License:
 
-Copyright (c) 2008 Martin Laine
+Copyright (c) 2010 Martin Laine
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -43,7 +43,7 @@ if (!class_exists('AudioPlayer')) {
 		// Name for serialized options saved in database
 		var $optionsName = "AudioPlayer_options";
 
-		var $version = "2.0";
+		var $version = "2.0.1";
 		
 		var $docURL = "http://wpaudioplayer.com/";
 		
@@ -603,7 +603,7 @@ if (!class_exists('AudioPlayer')) {
 					$this->options["behaviour"] = array();
 				}
 				
-				$this->options["flashAlternate"] = trim(stripslashes($_POST['ap_flashalternate']));
+				//$this->options["flashAlternate"] = trim(stripslashes($_POST['ap_flashalternate']));
 				$this->options["excerptAlternate"] = trim(stripslashes($_POST['ap_excerptalternate']));
 				$this->options["rssAlternate"] = $_POST['ap_rssalternate'];
 				$this->options["rssCustomAlternate"] = trim(stripslashes($_POST['ap_rsscustomalternate']));

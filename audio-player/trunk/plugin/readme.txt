@@ -5,7 +5,7 @@ Donate link: http://www.wpaudioplayer.com
 Tags: media, audio, podcast, post
 Requires at least: 2.2
 Tested up to: 2.9
-Stable tag: 2.0
+Stable tag: 2.0.1
 
 Audio Player is a highly configurable but simple mp3 player for all your audio needs. You can customise the player's colour scheme to match your blog theme, have it automatically show track information from the encoded ID3 tags and more.
 
