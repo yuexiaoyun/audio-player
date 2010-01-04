@@ -208,7 +208,7 @@
 			<li><strong><?php _e('Custom', $this->textDomain) ?></strong>: <?php _e('Choose this to use your own alternative content for all player instances. You can use this option to tell subscribers that they can listen to the audio file if they read the post on your blog.', $this->textDomain) ?></li>
 		</ul>
 		<p>
-			<label for="ap_rssalternate"><?php _e('Alternate content for	feeds', $this->textDomain) ?>:</label>
+			<label for="ap_rssalternate"><?php _e('Alternate content for feeds', $this->textDomain) ?>:</label>
 			<select id="ap_rssalternate" name="ap_rssalternate">
 				<option value="download"<?php if( $this->options["rssAlternate"] == 'download' ) echo( 'selected="selected"') ?>><?php _e('Download link', $this->textDomain) ?></option>
 				<option value="nothing"<?php if( $this->options["rssAlternate"] == 'nothing' ) echo( 'selected="selected"') ?>><?php _e('Nothing', $this->textDomain) ?></option>
