@@ -206,22 +206,14 @@
 	</target>
 	
 	<target name="release" depends="build" description="Release and deploy new version">
-		<input message="FTP username:" addproperty="ftp.username"/>
-		<input message="FTP password:" addproperty="ftp.password"/>
-		
-		<!-- Release to 1pixelout.net -->
-		<ftp server="${ftp.server}" binary="true" password="${ftp.password}" userid="${ftp.username}" remotedir="${ftp.path}">
-			<fileset dir="${dist.dir}"/>
-		</ftp>
-		
 		<input message="WP SVN username:" addproperty="svn.username"/>
 		<input message="WP SVN password:" addproperty="svn.password"/>
 		<input message="New version:" addproperty="version.tag"/>
 		
 		<!-- Release to WP plugins repository -->
-		<svn svnkit="true" username="${svn.username}" password="${svn.password}">
+		<svn username="${svn.username}" password="${svn.password}">
 			<delete url="${svn.url}/trunk" message="Deleted current trunk"/>
-			<import url="${svn.url}/trunk" path="${build.dir}/audio-player" message="Imported new release to trunk"/>
+			<import url="${svn.url}/trunk" path="${build.dir}" message="Imported new release to trunk"/>
 			<copy srcUrl="${svn.url}/trunk" destUrl="${svn.url}/tags/${version.tag}" message="Tagged version ${version.tag}"/>
 		</svn>
 		
@@ -232,7 +224,7 @@
 		<input message="FTP username:" addproperty="ftp.username"/>
 		<input message="FTP password:" addproperty="ftp.password"/>
 		
-		<!-- Release to 1pixelout.net -->
+		<!-- Release to wpaudioplayer.com -->
 		<ftp server="${ftp.server}" binary="true" password="${ftp.password}" userid="${ftp.username}" remotedir="${ftp.wpap.path}/wp-content/downloads">
 			<fileset dir="${dist.dir}"/>
 		</ftp>
