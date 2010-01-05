@@ -29,12 +29,11 @@ Upgrading from 1.2.3 to 2.0: The plugins/audio-player.php file is no longer need
 2. Upload the audio-player folder to your '/wp-content/plugins' folder
 3. Activate the plugin through the Plugins section in your WordPress admin
 
+== Changelog ==
+
+= 2.0.1 =
+* Fixed a bug where custom track titles were being ignored
+
 == Frequently Asked Questions ==
 
-= Does Audio Player support file formats other than mp3? =
-
-No. This is a limitation of the Adobe Flash Player
-
-= Can Audio Player read mp3 streams or playlists =
-
-No. The player is not designed for streaming audio or playlists.
+View the complete FAQs [here](http://wpaudioplayer.com/frequently-asked-questions). 
