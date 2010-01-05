@@ -217,6 +217,13 @@
 			<copy srcUrl="${svn.url}/trunk" destUrl="${svn.url}/tags/${version.tag}" message="Tagged version ${version.tag}"/>
 		</svn>
 		
+		<input message="SVN username:" addproperty="dev.svn.username"/>
+		<input message="SVN password:" addproperty="dev.svn.password"/>
+		
+		<svn username="${dev.svn.username}" password="${dev.svn.password}">
+			<copy srcUrl="${dev.svn.url}/trunk" destUrl="${dev.svn.url}/tags/${version.tag}" message="Tagged version ${version.tag}"/>
+		</svn>
+		
 		<antcall target="clean"/>
 	</target>
 
