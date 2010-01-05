@@ -3,7 +3,7 @@
 Plugin Name: Audio player
 Plugin URI: http://wpaudioplayer.com
 Description: Audio Player is a highly configurable but simple mp3 player for all your audio needs. You can customise the player's colour scheme to match your blog theme, have it automatically show track information from the encoded ID3 tags and more. Go to your Settings page to start configuring it.
-Version: 2.0.2
+Version: 2.0.3
 Author: Martin Laine
 Author URI: http://www.1pixelout.net
 
@@ -43,7 +43,7 @@ if (!class_exists('AudioPlayer')) {
 		// Name for serialized options saved in database
 		var $optionsName = "AudioPlayer_options";
 
-		var $version = "2.0.1";
+		var $version = "2.0.3";
 		
 		var $docURL = "http://wpaudioplayer.com/";
 		
@@ -259,13 +259,14 @@ if (!class_exists('AudioPlayer')) {
 					$options["colorScheme"]["track"] = str_replace("0x", "", get_option("audio_player_trackcolor"));
 					$options["colorScheme"]["loader"] = str_replace("0x", "", get_option("audio_player_loadercolor"));
 					$options["colorScheme"]["border"] = str_replace("0x", "", get_option("audio_player_bordercolor"));
-					$options["colorScheme"]["transparentpagebg"] = get_option("audio_player_transparentpagebgcolor");
+					$options["colorScheme"]["transparentpagebg"] = (bool) get_option("audio_player_transparentpagebgcolor");
 					$options["colorScheme"]["pagebg"] = str_replace("#", "", get_option("audio_player_pagebgcolor"));
 				}
 				
 				// TODO: maybe delete old options but not while in beta so easy to revert to old version
 			} else if (version_compare($options["version"], $this->version) == -1) {
 				// TODO: Upgrade code
+				$options["colorScheme"]["transparentpagebg"] = (bool) $options["colorScheme"]["transparentpagebg"];
 			}
 			
 			// Record current version in DB
