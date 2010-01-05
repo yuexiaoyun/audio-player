@@ -4,7 +4,8 @@ flash.exe=
 
 wpap.dir=
 
-svn.url=http://svn.wp-plugins.org/audio-player/branches/
+dev.svn.url=http://tools.assembla.com/svn/1pixelout/audio-player
+svn.url=http://plugins.svn.wordpress.org/audio-player
 
 ftp.server=
 ftp.path=
