@@ -5,7 +5,7 @@ Donate link: http://www.wpaudioplayer.com
 Tags: media, audio, podcast, post
 Requires at least: 2.2
 Tested up to: 2.9
-Stable tag: 2.0.2
+Stable tag: 2.0.3
 
 Audio Player is a highly configurable but simple mp3 player for all your audio needs. You can customise the player's colour scheme to match your blog theme, have it automatically show track information from the encoded ID3 tags and more.
 
@@ -30,6 +30,9 @@ Upgrading from 1.2.3 to 2.0: The plugins/audio-player.php file is no longer need
 3. Activate the plugin through the Plugins section in your WordPress admin
 
 == Changelog ==
+
+= 2.0.3 =
+* Fixed an issue with migrating the transparent background option to version 2.x
 
 = 2.0.2 =
 * Updated SWFObject to version 2.2
