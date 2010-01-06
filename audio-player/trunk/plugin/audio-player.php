@@ -262,8 +262,6 @@ if (!class_exists('AudioPlayer')) {
 					$options["colorScheme"]["transparentpagebg"] = (bool) get_option("audio_player_transparentpagebgcolor");
 					$options["colorScheme"]["pagebg"] = str_replace("#", "", get_option("audio_player_pagebgcolor"));
 				}
-				
-				// TODO: maybe delete old options but not while in beta so easy to revert to old version
 			} else if (version_compare($options["version"], $this->version) == -1) {
 				// TODO: Upgrade code
 				$options["colorScheme"]["transparentpagebg"] = (bool) $options["colorScheme"]["transparentpagebg"];
