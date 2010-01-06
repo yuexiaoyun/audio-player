@@ -216,7 +216,7 @@
 			</select>
 		</p>
 		<p>
-			<label for="ap_rsscustomalternate"><?php _e('Custom	alternate content', $this->textDomain) ?>:</label>
+			<label for="ap_rsscustomalternate"><?php _e('Custom alternate content', $this->textDomain) ?>:</label>
 			<input type="text" id="ap_rsscustomalternate" name="ap_rsscustomalternate" size="60" value="<?php echo( $this->options["rssCustomAlternate"] ) ?>" />
 		</p>
 	</div>
