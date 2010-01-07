@@ -436,6 +436,9 @@ if (!class_exists('AudioPlayer')) {
 			// Create an array of files to load in player
 			foreach ( explode( ",", trim($data[0]) ) as $afile ) {
 				$afile = trim($afile);
+				if (function_exists("html_entity_decode")) {
+					$afile = html_entity_decode($afile);
+				}
 				// Get absolute URLs for relative ones
 				if (!$this->isAbsoluteURL($afile)) {
 					$afile = $this->audioRoot . "/" . $afile;
