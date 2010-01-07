@@ -139,7 +139,6 @@ if (!class_exists('AudioPlayer')) {
 			
 			add_action("wp_head", array(&$this, "addHeaderCode"));
 			add_action("wp_footer", array(&$this, "addFooterCode"));
-			add_action("admin_head", array(&$this, "overrideMediaUpload"));
 			
 			add_filter("the_content", array(&$this, "processContent"), 2);
 			if (in_array("comments", $this->options["behaviour"])) {
@@ -151,6 +150,7 @@ if (!class_exists('AudioPlayer')) {
 			add_filter("the_excerpt_rss", array(&$this, "processContent"));
 			
 			add_filter("attachment_fields_to_edit", array(&$this, "insertAudioPlayerButton"), 10, 2);
+			add_filter("media_send_to_editor", array(&$this, "sendToEditor"));
 		}
 		
 		/**
@@ -658,17 +658,37 @@ if (!class_exists('AudioPlayer')) {
 		 * @param $post Object
 		 */
 		function insertAudioPlayerButton($form_fields, $post) {
+			global $wp_version;
+			
 			$file = wp_get_attachment_url($post->ID);
 			
 			// Only add the extra button if the attachment is an mp3 file
 			if ($post->post_mime_type == 'audio/mpeg') {
-				$form_fields["url"]["html"] .= "<button type='button' class='button audio-player-" . $post->ID . "' value='[audio:" . attribute_escape($file) . "]' title='[audio:" . attribute_escape($file) . "]'>Audio Player</button>";
-				$form_fields["url"]["html"] .= "<script type='text/javascript'>
-				jQuery('button.audio-player-" . $post->ID . "').bind('click', function(){jQuery(this).siblings('input').val(this.value);});
-				</script>\n";
+				$form_fields["url"]["html"] .= "<button type='button' class='button urlaudioplayer audio-player-" . $post->ID . "' value='[audio:" . attribute_escape($file) . "]' title='[audio:" . attribute_escape($file) . "]'>Audio Player</button>";
+				
+				if (version_compare($wp_version, "2.7", "<")) {
+					$form_fields["url"]["html"] .= "<script type='text/javascript'>
+					jQuery('button.audio-player-" . $post->ID . "').bind('click', function(){jQuery(this).siblings('input').val(this.value);});
+					</script>\n";
+				}
 			}
 			
 			return $form_fields;
+		}
+		
+		/**
+		 * Format the html inserted when the Audio Player button is used
+		 * @param $html String
+		 * @return String 
+		 */
+		function sendToEditor($html) {
+			if (preg_match("/<a ([^=]+=['\"][^\"']+['\"] )*href=['\"](\[audio:([^\"']+\.mp3)])['\"]( [^=]+=['\"][^\"']+['\"])*>([^<]*)<\/a>/i", $html, $matches)) {
+				$html = $matches[2];
+				if (strlen($matches[5]) > 0) {
+					$html = preg_replace("/]$/i", "|titles=" . $matches[5] . "]", $html);
+				}
+			}
+			return $html;
 		}
 
 		/**
