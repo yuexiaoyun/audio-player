@@ -16,8 +16,16 @@ Audio Player is a highly configurable but simple mp3 player for all your audio n
 Features include:
 
 * configurable colour scheme to match your blog theme
-* options such as autostart and loop
+* volume control
+* right-to-left layout switch for Arabic and Hebrew language sites
+* many options such as autostart and loop
 * ID3 tag support (custom track info also available)
+
+Related links:
+
+* [Usage](http://wpaudioplayer.com/usage)
+* [FAQs](http://wpaudioplayer.com/frequently-asked-questions)
+* [Troubleshooting](http://wpaudioplayer.com/support/troubleshooting)
 
 == Installation ==
 
@@ -32,6 +40,9 @@ Upgrading from 1.2.3 to 2.0: The plugins/audio-player.php file is no longer need
 == Changelog ==
 
 = 2.0.3 =
+* Fixed Spanish translation file problem
+* Added Danish language file and fixed small errors in all others
+* Ampersands in mp3 file names are now properly decoded
 * Fixed an issue with migrating the transparent background option to version 2.x
 
 = 2.0.2 =

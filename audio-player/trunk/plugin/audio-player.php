@@ -42,7 +42,7 @@ if (!class_exists('AudioPlayer')) {
     class AudioPlayer {
 		// Name for serialized options saved in database
 		var $optionsName = "AudioPlayer_options";
-
+		
 		var $version = "2.0.3";
 		
 		var $docURL = "http://wpaudioplayer.com/";
@@ -263,7 +263,7 @@ if (!class_exists('AudioPlayer')) {
 					$options["colorScheme"]["pagebg"] = str_replace("#", "", get_option("audio_player_pagebgcolor"));
 				}
 			} else if (version_compare($options["version"], $this->version) == -1) {
-				// TODO: Upgrade code
+				// Upgrade code
 				$options["colorScheme"]["transparentpagebg"] = (bool) $options["colorScheme"]["transparentpagebg"];
 			}
 			
@@ -491,9 +491,6 @@ if (!class_exists('AudioPlayer')) {
 		 * @param $actualFile String[optional] url of main single file (empty if multiple files)
 		 */
 		function getPlayer($source, $playerOptions = array(), $actualFile = "") {
-			// Get next player ID
-			$this->playerID++;
-			
 			// Add source to options and encode if necessary
 			$playerOptions["soundFile"] = $source;
 			if ($this->options["encodeSource"]) {
@@ -525,7 +522,7 @@ if (!class_exists('AudioPlayer')) {
 				}
 			} else {
 				// Not in a feed so return player widget
-				$playerElementID = "audioplayer_" . $this->playerID;
+				$playerElementID = "audioplayer_" . ++$this->playerID;
 				if (strlen($this->options["flashAlternate"]) > 0) {
 					$playerCode = str_replace(array("%playerID%", "%downloadURL%"), array($playerElementID, $actualFile), $this->options["flashAlternate"]);
 				} else {
