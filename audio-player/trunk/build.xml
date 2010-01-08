@@ -80,18 +80,26 @@
 		<filter token="buildNumber" value="${timestamp}"/>
 		<copy todir="${build.dir}" includeemptydirs="true" filtering="true">
 			<fileset dir="${plugin.src.dir}">
-				<include name="**/*.php"/>
+				<exclude name="**/*.back"/>
+				<exclude name="**/audio-player.js"/>
+				<exclude name="**/swfobject.js"/>
 			</fileset>
 		</copy>
 		
-		<copy todir="${build.dir}" includeemptydirs="true">
-			<fileset dir="${plugin.src.dir}">
-				<include name="**"/>
-				<exclude name="**/*.php"/>
-				<exclude name="**/*.js"/>
-				<exclude name="**/*.back"/>
-			</fileset>
-		</copy>
+		<!-- Concatenate swfobject library and audio-player.js -->
+		<concat destfile="${build.dir}/assets/audio-player.js">
+			<filelist dir="${plugin.src.dir}/assets" files="lib/swfobject.js,audio-player.js"/>
+		</concat>
+		
+		<!-- Rename swfobject to audioplayer_swfobject to avoid conflicts with other instances of the library -->
+		<replaceregexp file="${build.dir}/assets/audio-player.js" match="([^/])(swfobject)" replace="\1audioplayer_swfobject"/>
+		
+		<!-- Minify JavaScript files (except mootools and swfobject) -->
+		<foreach target="-minify" param="fileToMinify">
+			<path>
+				<fileset dir="${build.dir}/assets" includes="**/*.js"/>
+			</path>
+		</foreach>
 		
 		<condition property="swfExists">
 			<available file="${player.src.dir}/player.swf"/>
@@ -102,45 +110,18 @@
 		<copy todir="${build.dir}/assets" file="${player.src.dir}/player.swf"/>
 		<copy tofile="${build.dir}/assets/lib/jquery.js" file="${plugin.src.dir}/assets/lib/jquery.js"/>
 		
-		<filter token="swfobject" value="audioplayer_swfobject"/>
-		<copy todir="${build.dir}/assets/unc" filtering="true">
-			<fileset dir="${plugin.src.dir}/assets">
-				<include name="audio-player-admin.js"/>
-				<include name="audio-player.js"/>
-				<include name="media-upload.js"/>
-				<include name="cpicker/*.js"/>
-			</fileset>
-		</copy>
-		
-		<!-- Minify JavaScript files (except mootools and swfobject) -->
-		<ant target="-minify"/>
-		
-		<delete dir="${build.dir}/assets/unc"/>
-		
-		<concat destfile="${build.dir}/assets/audio-player.js" append="true">
-			<fileset dir="${plugin.src.dir}/assets">
-				<include name="lib/swfobject.js"/>
-			</fileset>
-		</concat>
-		
 		<zip destfile="${dist.dir}/audio-player.zip">
 			<zipfileset dir="${build.dir}" prefix="audio-player"/>
 		</zip>
 	</target>
 	
 	<target name="-minify">
-		<apply executable="java" parallel="false" dest="${build.dir}/assets">
-			<fileset dir="${build.dir}/assets/unc">
-				<include name="**/*.js"/>
-			</fileset>
-			<arg line="-jar"/>
-			<arg path="${lib.dir}/yuicompressor-2.2.5.jar"/>
+		<echo level="info">Minifying ${fileToMinify}...</echo>
+		<java jar="${lib.dir}/yuicompressor.jar" fork="true" spawn="true">
+			<arg line="-o &quot;${fileToMinify}&quot;"/>
 			<arg line="--charset utf-8"/>
-			<arg line="-o"/>
-			<targetfile/>
-			<srcfile/>
-			<mapper type="glob" from="*.js" to="*.js"/>
-		</apply>
+			<arg value="&quot;${fileToMinify}&quot;"/>
+		</java>
 	</target>
 	
 	<target name="build.standalone" depends="-init" description="Build standalone">
@@ -154,35 +135,24 @@
 		
 		<copy file="${player.src.dir}/player.swf" todir="${build.dir}"/>
 		
-		<filter token="swfobject" value="swfobject"/>
-		<copy file="${plugin.src.dir}/assets/audio-player.js" tofile="${build.dir}/audio-player-uncompressed.js" filtering="true"/>
+		<copy file="${plugin.src.dir}/assets/audio-player.js" tofile="${build.dir}/audio-player-uncompressed.js"/>
 		
-		<filter token="swfobject" value="audioplayer_swfobject"/>
-		<copy file="${plugin.src.dir}/assets/audio-player.js" tofile="${build.dir}/unc/audio-player.js" filtering="true"/>
+		<copy file="${plugin.src.dir}/assets/audio-player.js" tofile="${build.dir}/audio-player-noswfobject.js"/>
 		
-		<!-- Minify audio-player.js -->
-		<apply executable="java" parallel="false" dest="${build.dir}">
-			<fileset dir="${build.dir}/unc">
-				<include name="audio-player.js"/>
-			</fileset>
-			<arg line="-jar"/>
-			<arg path="${lib.dir}/yuicompressor-2.2.5.jar"/>
-			<arg line="--charset utf-8"/>
-			<arg line="-o"/>
-			<targetfile/>
-			<srcfile/>
-			<mapper type="glob" from="*.js" to="*.js"/>
-		</apply>
-		
-		<delete dir="${build.dir}/unc"/>
-		
-		<copy file="${build.dir}/audio-player.js" tofile="${build.dir}/audio-player-noswfobject.js"/>
-		
-		<concat destfile="${build.dir}/audio-player.js" append="true">
-			<fileset dir="${plugin.src.dir}/assets">
-				<include name="lib/swfobject.js"/>
-			</fileset>
+		<!-- Concatenate swfobject library and audio-player.js -->
+		<concat destfile="${build.dir}/audio-player.js">
+			<filelist dir="${plugin.src.dir}/assets" files="lib/swfobject.js,audio-player.js"/>
 		</concat>
+		
+		<!-- Rename swfobject to audioplayer_swfobject to avoid conflicts with other instances of the library -->
+		<replaceregexp file="${build.dir}/audio-player.js" match="([^/])(swfobject)" replace="\1audioplayer_swfobject"/>
+		
+		<!-- Minify JavaScript files -->
+		<foreach target="-minify" param="fileToMinify">
+			<path>
+				<fileset dir="${build.dir}" includes="*.js" excludes="audio-player-uncompressed.js"/>
+			</path>
+		</foreach>
 		
 		<copy file="${plugin.src.dir}/license.txt" todir="${build.dir}"/>
 		

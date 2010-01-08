@@ -4,6 +4,7 @@ var AudioPlayer = function () {
 	var playerURL = "";
 	var defaultOptions = {};
 	var currentVolume = -1;
+	var requiredFlashVersion = "9";
 	
 	function getPlayer(playerID) {
 		if (document.all && !window[playerID]) {
@@ -25,6 +26,10 @@ var AudioPlayer = function () {
 		setup: function (url, options) {
 			playerURL = url;
 			defaultOptions = options;
+			if (swfobject.hasFlashPlayerVersion(requiredFlashVersion)) {
+				swfobject.switchOffAutoHideShow();
+				swfobject.createCSS("p.audioplayer_container span", "visibility:hidden;height:24px;overflow:hidden;padding:0;border:none;");
+			}
 		},
 
 		getPlayer: function (playerID) {
@@ -78,7 +83,7 @@ var AudioPlayer = function () {
 			
 			flashVars.playerID = elementID;
 			
-			@swfobject@.embedSWF(playerURL, elementID, instanceOptions.width.toString(), "24", "9", false, flashVars, flashParams, flashAttributes);
+			swfobject.embedSWF(playerURL, elementID, instanceOptions.width.toString(), "24", requiredFlashVersion, false, flashVars, flashParams, flashAttributes);
 			
 			instances.push(elementID);
 		},
