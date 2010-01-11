@@ -698,7 +698,12 @@ if (!class_exists('AudioPlayer')) {
 			echo '<script type="text/javascript" src="' . $this->pluginURL . '/assets/audio-player.js?ver=@buildNumber@"></script>';
 			echo "\n";
 			echo '<script type="text/javascript">';
-			echo 'AudioPlayer.setup("' . $this->playerURL . '?ver=@buildNumber@", ' . $this->php2js($this->getPlayerOptions()) . ');';
+			if (function_exists("json_encode")) {
+				$jsFormattedOptions = json_encode($this->getPlayerOptions());
+			} else {
+				$jsFormattedOptions = $this->php2js($this->getPlayerOptions());
+			}
+			echo 'AudioPlayer.setup("' . $this->playerURL . '?ver=@buildNumber@", ' . $jsFormattedOptions . ');';
 			echo '</script>';
 			echo "\n";
 		}
