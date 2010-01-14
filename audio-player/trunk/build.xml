@@ -92,7 +92,7 @@
 		</concat>
 		
 		<!-- Rename swfobject to audioplayer_swfobject to avoid conflicts with other instances of the library -->
-		<replaceregexp file="${build.dir}/assets/audio-player.js" match="([^/])(swfobject)" replace="\1audioplayer_swfobject"/>
+		<replaceregexp file="${build.dir}/assets/audio-player.js" match="([^/])(swfobject)" replace="\1audioplayer_swfobject" flags="g"/>
 		
 		<!-- Minify JavaScript files (except mootools and swfobject) -->
 		<foreach target="-minify" param="fileToMinify">
