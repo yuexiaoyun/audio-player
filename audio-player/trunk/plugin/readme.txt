@@ -2,7 +2,7 @@
 
 Contributors: doryphores
 Donate link: http://www.wpaudioplayer.com
-Tags: media, audio, podcast, post, mp3, music, embed, flash, player, sound
+Tags: media, audio, podcast, post, mp3, music, embed, flash, player, sound, media player, music player, mp3 player
 Requires at least: 2.2
 Tested up to: 2.9
 Stable tag: 2.0.3
