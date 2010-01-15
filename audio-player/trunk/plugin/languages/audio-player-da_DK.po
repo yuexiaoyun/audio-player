@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: audio-player\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2008-08-25 22:14+0000\n"
-"PO-Revision-Date: 2010-01-06 11:15-0000\n"
+"PO-Revision-Date: 2010-01-15 15:15-0000\n"
 "Last-Translator: Martin Laine <martin@1pixelout.net>\n"
 "Language-Team: Danish <da@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -26,11 +26,11 @@ msgstr "Indstillinger"
 msgid "[Audio clip: view full post to listen]"
 msgstr "[Lydklip: se det fulde indlæg for at aflytte]"
 
-#: ../audio-player.php:512
+#: ../audio-player.php:510
 msgid "Download audio file"
 msgstr "Hent lydfil"
 
-#: ../audio-player.php:531
+#: ../audio-player.php:529
 #, php-format
 msgid "Audio clip: Adobe Flash Player (version 9 or above) is required to play this audio clip. Download the latest version <a href=\"%s\" title=\"Download Adobe Flash Player\">here</a>. You also need to have JavaScript enabled in your browser."
 msgstr "Lydklip: Adobe Flash Player (version 9 eller højere) kræves for at afspille dette lydklip. Hent den seneste version <a href=\"%s\" title=\"Hent Adobe Flash Player\">her</a>. Du skal også have JavaScript aktiveret i din browser."
@@ -315,12 +315,10 @@ msgid "Choose this to use your own alternative content for all player instances.
 msgstr "Vælg dette for at bruge dit eget alternative indhold for alle afspillere. Du kan bruge denne valgmulighed til at fortælle abonnenter at de kan lytte til lyd-filen hvis de læser indlægget på din blog."
 
 #: ../php/options-panel.php:211
-#, fuzzy
 msgid "Alternate content for feeds"
 msgstr "Alternativ indhold for feeds"
 
 #: ../php/options-panel.php:219
-#, fuzzy
 msgid "Custom alternate content"
 msgstr "Brugertilpasset alternativt indhold"
 

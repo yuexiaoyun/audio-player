@@ -77,14 +77,15 @@
 	<target name="build" depends="-init" description="Build plugin archive">
 		<delete dir="${build.dir}"/>
 		
-		<filter token="buildNumber" value="${timestamp}"/>
-		<copy todir="${build.dir}" includeemptydirs="true" filtering="true">
+		<copy todir="${build.dir}" includeemptydirs="true">
 			<fileset dir="${plugin.src.dir}">
 				<exclude name="**/*.back"/>
 				<exclude name="**/audio-player.js"/>
 				<exclude name="**/swfobject.js"/>
 			</fileset>
 		</copy>
+		
+		<replace dir="${build.dir}" includes="**/*.php" token="@buildNumber@" value="${timestamp}"/>
 		
 		<!-- Concatenate swfobject library and audio-player.js -->
 		<concat destfile="${build.dir}/assets/audio-player.js">
