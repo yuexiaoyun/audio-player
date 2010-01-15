@@ -436,9 +436,7 @@ if (!class_exists('AudioPlayer')) {
 			// Create an array of files to load in player
 			foreach ( explode( ",", trim($data[0]) ) as $afile ) {
 				$afile = trim($afile);
-				if (function_exists("html_entity_decode")) {
-					$afile = html_entity_decode($afile);
-				}
+				
 				// Get absolute URLs for relative ones
 				if (!$this->isAbsoluteURL($afile)) {
 					$afile = $this->audioRoot . "/" . $afile;
@@ -474,11 +472,6 @@ if (!class_exists('AudioPlayer')) {
 				$playerOptions[trim($pair[0])] = trim($pair[1]);
 			}
 			
-			// Get title from 
-			/*if (count($matches) == 6) {
-				$playerOptions["titles"] = $matches[5];
-			}*/
-			
 			// Return player instance code
 			return $this->getPlayer( implode( ",", $files ), $playerOptions, $actualFile );
 		}
@@ -491,10 +484,17 @@ if (!class_exists('AudioPlayer')) {
 		 * @param $actualFile String[optional] url of main single file (empty if multiple files)
 		 */
 		function getPlayer($source, $playerOptions = array(), $actualFile = "") {
+			// Decode HTML entities in file names
+			if (function_exists("html_entity_decode")) {
+				$source = html_entity_decode($source);
+			}
+
 			// Add source to options and encode if necessary
-			$playerOptions["soundFile"] = $source;
+			
 			if ($this->options["encodeSource"]) {
 				$playerOptions["soundFile"] = $this->encodeSource($source);
+			} else {
+				$playerOptions["soundFile"] = $source;
 			}
 			
 			if (is_feed()) {
@@ -698,11 +698,7 @@ if (!class_exists('AudioPlayer')) {
 			echo '<script type="text/javascript" src="' . $this->pluginURL . '/assets/audio-player.js?ver=@buildNumber@"></script>';
 			echo "\n";
 			echo '<script type="text/javascript">';
-			if (function_exists("json_encode")) {
-				$jsFormattedOptions = json_encode($this->getPlayerOptions());
-			} else {
-				$jsFormattedOptions = $this->php2js($this->getPlayerOptions());
-			}
+			$jsFormattedOptions = $this->php2js($this->getPlayerOptions());
 			echo 'AudioPlayer.setup("' . $this->playerURL . '?ver=@buildNumber@", ' . $jsFormattedOptions . ');';
 			echo '</script>';
 			echo "\n";
@@ -712,11 +708,16 @@ if (!class_exists('AudioPlayer')) {
 		 * Output necessary stuff to WP footer section (JS calls to embed players)
 		 */
 		function addFooterCode() {
-			echo '<script type="text/javascript">';
-			echo "\n";
-			echo $this->footerCode;
-			echo '</script>';
-			echo "\n";
+			if (strlen($this->footerCode) > 0) {
+				echo '<script type="text/javascript">';
+				echo "\n";
+				echo $this->footerCode;
+				echo '</script>';
+				echo "\n";
+				
+				// Reset it now
+				$this->footerCode = "";
+			}
 		}
 		
 		/**
@@ -802,7 +803,17 @@ if (!class_exists('AudioPlayer')) {
 			foreach($object as $key=>$value) {
 				// Format booleans
 				if (is_bool($value)) $value = $value?"yes":"no";
-				$js_options .= $separator . $key . ':"' . rawurlencode($value) .'"';
+				else if (in_array($key, array("soundFile", "titles", "artists"))) {
+					if (in_array($key, array("titles", "artists"))) {
+						// Decode HTML entities in titles and artists
+						if (function_exists("html_entity_decode")) {
+							$value = html_entity_decode($value);
+						}
+					}
+
+					$value = rawurlencode($value);
+				}
+				$js_options .= $separator . $key . ':"' . $value .'"';
 				$separator = $real_separator;
 			}
 			$js_options .= "}";
