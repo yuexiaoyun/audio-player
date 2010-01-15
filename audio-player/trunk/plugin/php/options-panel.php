@@ -228,12 +228,12 @@
 		</p>
 		<p>
 			<label for="ap_audioprefixwebpath"><?php _e('Pre-appended audio clip URL', $this->textDomain) ?>:</label>
-			<input type="text" id="ap_audioprefixwebpath" name="ap_audioprefixwebpath" size="60" value="<?php echo $this->options["prefixClip"]; ?>" /><br />
+			<input type="text" id="ap_audioprefixwebpath" name="ap_audioprefixwebpath" size="60" value="<?php echo $this->options["introClip"]; ?>" /><br />
 			<em><?php _e('Leave this value blank for no pre-appended audio', $this->textDomain) ?></em>
 		</p>
 		<p>
 			<label for="ap_audiopostfixwebpath"><?php _e('Post-appended audio clip URL', $this->textDomain) ?>:</label>
-			<input type="text" id="ap_audiopostfixwebpath" name="ap_audiopostfixwebpath" size="60" value="<?php echo $this->options["postfixClip"]; ?>" /><br />
+			<input type="text" id="ap_audiopostfixwebpath" name="ap_audiopostfixwebpath" size="60" value="<?php echo $this->options["outroClip"]; ?>" /><br />
 			<em><?php _e('Leave this value blank for no post-appended audio', $this->textDomain) ?></em>
 		</p>
 	</div>
