@@ -194,7 +194,7 @@ if (!class_exists('AudioPlayer')) {
 		 */
 		function loadLanguageFile() {
 			if(!$this->languageFileLoaded) {
-				load_plugin_textdomain($this->textDomain, "wp-content/plugins/audio-player/languages");
+				load_plugin_textdomain($this->textDomain, "wp-content/plugins/audio-player/languages", dirname( plugin_basename( __FILE__ ) ) . "/languages");
 				$this->languageFileLoaded = true;
 			}
 		}
