@@ -29,17 +29,23 @@ Related links:
 
 == Installation ==
 
-Upgrade - VERY IMPORTANT
-
-Upgrading from 1.2.3 to 2.0: The plugins/audio-player.php file is no longer needed and MUST be deleted. The audio-player.php file now lives in plugins/audio-player/
-
 1. Extract the contents of the archive (zip file)
 2. Upload the audio-player folder to your '/wp-content/plugins' folder
 3. Activate the plugin through the Plugins section in your WordPress admin
 
+IMPORTANT NOTE:
+
+This plugin will only work if your theme allows inserting code in the HEAD and FOOTER sections of your blog. See [this page](http://wpaudioplayer.com/support/troubleshooting) for more details.
+
+Upgrade - VERY IMPORTANT
+
+Upgrading from 1.2.3 to 2.0: The plugins/audio-player.php file is no longer needed and MUST be deleted. The audio-player.php file now lives in plugins/audio-player/
+
 == Changelog ==
 
 = 2.0.3 =
+* Play button now points to the left in RTL layout
+* Alternate content is now hidden before player loads
 * Fixed Spanish translation file problem
 * Added Danish language file and fixed small errors in all others
 * Ampersands in mp3 file names are now properly decoded
