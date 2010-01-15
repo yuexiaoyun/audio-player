@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: audio-player\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-08-25 22:14+0000\n"
-"PO-Revision-Date: 2010-01-06 11:12-0000\n"
+"PO-Revision-Date: 2010-01-15 15:12-0000\n"
 "Last-Translator: Martin Laine <martin@1pixelout.net>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -27,11 +27,11 @@ msgstr "Réglages"
 msgid "[Audio clip: view full post to listen]"
 msgstr "[Clip audio: accéder article pour écouter]"
 
-#: ../audio-player.php:512
+#: ../audio-player.php:510
 msgid "Download audio file"
 msgstr "Télécharger fichier audio"
 
-#: ../audio-player.php:531
+#: ../audio-player.php:529
 #, php-format
 msgid "Audio clip: Adobe Flash Player (version 9 or above) is required to play this audio clip. Download the latest version <a href=\"%s\" title=\"Download Adobe Flash Player\">here</a>. You also need to have JavaScript enabled in your browser."
 msgstr "Clip audio : Le lecteur Adobe Flash (version 9 ou plus) est nécessaire pour la lecture de ce clip audio. Téléchargez la dernière version <a href=\"%s\" title=\"Download Adobe Flash Player\">ici</a>. Vous devez aussi avoir JavaScript activé dans votre navigateur."
@@ -316,12 +316,10 @@ msgid "Choose this to use your own alternative content for all player instances.
 msgstr "Choisissez ceci pour utiliser votre propre contenu alternatif pour toutes les instances du lecteur. Vous pouvez utiliser cette option pour informer les souscripteurs qu'ils peuvent écouter le fichier audio s'ils lisent l'article sur votre blog."
 
 #: ../php/options-panel.php:211
-#, fuzzy
 msgid "Alternate content for feeds"
 msgstr "Contenu alternatif pour les flux."
 
 #: ../php/options-panel.php:219
-#, fuzzy
 msgid "Custom alternate content"
 msgstr "Contenu alternatif personnalisé"
 
