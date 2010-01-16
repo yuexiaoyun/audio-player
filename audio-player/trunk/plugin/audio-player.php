@@ -3,7 +3,7 @@
 Plugin Name: Audio player
 Plugin URI: http://wpaudioplayer.com
 Description: Audio Player is a highly configurable but simple mp3 player for all your audio needs. You can customise the player's colour scheme to match your blog theme, have it automatically show track information from the encoded ID3 tags and more. Go to your Settings page to start configuring it.
-Version: 2.0.3
+Version: 2.0.3.1
 Author: Martin Laine
 Author URI: http://www.1pixelout.net
 
@@ -30,20 +30,22 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-// Pre-2.6 compatibility for wp-content folder location
-if (!defined("WP_CONTENT_URL")) {
-	define("WP_CONTENT_URL", get_option("siteurl") . "/wp-content");
-}
-if (!defined("WP_CONTENT_DIR")) {
-	define("WP_CONTENT_DIR", ABSPATH . "wp-content");
-}
+// Pre-2.6 compatibility
+if ( ! defined( 'WP_CONTENT_URL' ) )
+      define( 'WP_CONTENT_URL', get_option( 'siteurl' ) . '/wp-content' );
+if ( ! defined( 'WP_CONTENT_DIR' ) )
+      define( 'WP_CONTENT_DIR', ABSPATH . 'wp-content' );
+if ( ! defined( 'WP_PLUGIN_URL' ) )
+      define( 'WP_PLUGIN_URL', WP_CONTENT_URL. '/plugins' );
+if ( ! defined( 'WP_PLUGIN_DIR' ) )
+      define( 'WP_PLUGIN_DIR', WP_CONTENT_DIR . '/plugins' );
 
 if (!class_exists('AudioPlayer')) {
     class AudioPlayer {
 		// Name for serialized options saved in database
 		var $optionsName = "AudioPlayer_options";
 		
-		var $version = "2.0.3";
+		var $version = "2.0.3.1";
 		
 		var $docURL = "http://wpaudioplayer.com/";
 		
@@ -119,8 +121,8 @@ if (!class_exists('AudioPlayer')) {
 		 */
 		function AudioPlayer() {
 			// Get plugin URL and absolute path
-			$this->pluginPath = WP_CONTENT_DIR . "/plugins/" . plugin_basename(dirname(__FILE__));
-			$this->pluginURL = WP_CONTENT_URL . "/plugins/" . plugin_basename(dirname(__FILE__));
+			$this->pluginPath = WP_PLUGIN_DIR . "/" . plugin_basename(dirname(__FILE__));
+			$this->pluginURL = WP_PLUGIN_URL . "/" . plugin_basename(dirname(__FILE__));
 			
 			$this->playerURL = $this->pluginURL . "/assets/player.swf";
 			
