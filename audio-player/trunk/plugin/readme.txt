@@ -5,7 +5,7 @@ Donate link: http://www.wpaudioplayer.com
 Tags: media, audio, podcast, post, mp3, music, embed, flash, player, sound, media player, music player, mp3 player
 Requires at least: 2.2
 Tested up to: 2.9
-Stable tag: 2.0.3
+Stable tag: 2.0.3.1
 
 Audio Player is a highly configurable but simple mp3 player for all your audio needs. You can customise the player's colour scheme to match your blog theme, have it automatically show track information from the encoded ID3 tags and more.
 
@@ -42,6 +42,9 @@ Upgrade - VERY IMPORTANT
 Upgrading from 1.2.3 to 2.0: The plugins/audio-player.php file is no longer needed and MUST be deleted. The audio-player.php file now lives in plugins/audio-player/
 
 == Changelog ==
+
+= 2.0.3.1 =
+* Fixed path to plugins folder (in case plugins are stored in a non-standard place)
 
 = 2.0.3 =
 * Play button now points to the left in RTL layout
