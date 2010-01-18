@@ -153,6 +153,19 @@ if (!class_exists('AudioPlayer')) {
 			
 			add_filter("attachment_fields_to_edit", array(&$this, "insertAudioPlayerButton"), 10, 2);
 			add_filter("media_send_to_editor", array(&$this, "sendToEditor"));
+			
+			if ($this->options["disableEnclosures"]) {
+				add_filter("rss_enclosure", array(&$this, "removeEnclosures"));
+				add_filter("atom_enclosure", array(&$this, "removeEnclosures"));
+			}
+		}
+		
+		/**
+		 * Removes all enclosures from feeds
+		 * @return empty string
+		 */
+		function removeEnclosures() {
+			return "";
 		}
 		
 		/**
@@ -227,6 +240,7 @@ if (!class_exists('AudioPlayer')) {
 				"noInfo" => false,
 				"checkPolicy" => false,
 				"rtl" => false,
+				"disableEnclosures" => false,
 
 				"colorScheme" => $this->defaultColorScheme
 			);
@@ -597,6 +611,7 @@ if (!class_exists('AudioPlayer')) {
 				$this->options["checkPolicy"] = isset( $_POST["ap_checkPolicy"] );
 				$this->options["rtl"] = isset( $_POST["ap_rtlMode"] );
 				$this->options["enclosuresAtTop"] = isset( $_POST["ap_enclosuresAtTop"] );
+				$this->options["disableEnclosures"] = isset( $_POST["ap_disableEnclosures"] );
 				
 				if (isset($_POST['ap_behaviour'])) {
 					$this->options["behaviour"] = $_POST['ap_behaviour'];

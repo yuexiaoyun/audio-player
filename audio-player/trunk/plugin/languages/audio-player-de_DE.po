@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: audio-player\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2008-08-25 22:14+0000\n"
-"PO-Revision-Date: 2010-01-15 15:14-0000\n"
+"PO-Revision-Date: 2010-01-18 11:12-0000\n"
 "Last-Translator: Martin Laine <martin@1pixelout.net>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -17,20 +17,20 @@ msgstr ""
 "X-Launchpad-Export-Date: 2010-01-04 17:12+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#: ../audio-player.php:178
+#: ../audio-player.php:193
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: ../audio-player.php:219
-#: ../audio-player.php:220
+#: ../audio-player.php:234
+#: ../audio-player.php:235
 msgid "[Audio clip: view full post to listen]"
 msgstr "[Audio-Clip: schaue ganze Text an um zu hören]"
 
-#: ../audio-player.php:510
+#: ../audio-player.php:526
 msgid "Download audio file"
 msgstr "Audio-Datei herunterladen"
 
-#: ../audio-player.php:529
+#: ../audio-player.php:545
 #, php-format
 msgid "Audio clip: Adobe Flash Player (version 9 or above) is required to play this audio clip. Download the latest version <a href=\"%s\" title=\"Download Adobe Flash Player\">here</a>. You also need to have JavaScript enabled in your browser."
 msgstr "Musikvideo: Adobe Flash Player (Version 9 oder höher) wird benötigt um dieses Musikvideo abzuspielen. Die aktuellste Version steht <a href=\"%s\" title=\"Download Adobe Flash Player\">hier</a> zum herunterladen bereit. Außerdem muss JavaScript in Ihrem Browser aktiviert sein."
@@ -396,4 +396,13 @@ msgstr "Zu Aktivieren um URLs zu Ihren MP3-Dateien zu encoden. Dies ist der einz
 #: ../php/options-panel.php:289
 msgid "Encode mp3 URLs"
 msgstr "MP3-URLs encodieren"
+
+#: ../php/options-panel.php:302
+#: ../php/options-panel.php:310
+msgid "Remove all enclosures from feeds"
+msgstr ""
+
+#: ../php/options-panel.php:304
+msgid "This will remove all enclosures from your blog feeds. Only do this if you do not want your visitors to download the mp3 files. Do not do this if you do any kind of podcasting via your blog."
+msgstr ""
 
