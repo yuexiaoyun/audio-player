@@ -298,6 +298,18 @@
 		</p>
 		*/ ?>
 		
+
+		<h3><?php _e('Remove all enclosures from feeds', $this->textDomain) ?></h3>
+		<p>
+			<?php _e('This will remove all enclosures from your blog feeds. Only do this if you do not want your visitors to download the mp3 files. Do not do this if you do any kind of podcasting via your blog.', $this->textDomain) ?>
+		</p>
+		<ul class="ap_optionlist">
+			<li>
+				<label for="ap_disableEnclosures">
+				<input type="checkbox" name="ap_disableEnclosures" id="ap_disableEnclosures" value="true"<?php if ($this->options["disableEnclosures"]) echo ' checked="checked"'; ?> />
+				<strong><?php _e('Remove all enclosures from feeds', $this->textDomain) ?></strong></label>
+			</li>
+		</ul>
 	</div>
 
 	<p class="submit">

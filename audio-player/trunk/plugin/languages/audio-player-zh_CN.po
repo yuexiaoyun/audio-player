@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: audio-player\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-08-25 22:14+0000\n"
-"PO-Revision-Date: 2010-01-06 11:14-0000\n"
+"PO-Revision-Date: 2010-01-18 11:12-0000\n"
 "Last-Translator: Martin Laine <martin@1pixelout.net>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -19,20 +19,20 @@ msgstr ""
 "X-Launchpad-Export-Date: 2010-01-06 10:56+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#: ../audio-player.php:178
+#: ../audio-player.php:193
 msgid "Settings"
 msgstr "设置"
 
-#: ../audio-player.php:219
-#: ../audio-player.php:220
+#: ../audio-player.php:234
+#: ../audio-player.php:235
 msgid "[Audio clip: view full post to listen]"
 msgstr "[音频片段：您需要阅读全文以聆听此片段]"
 
-#: ../audio-player.php:512
+#: ../audio-player.php:526
 msgid "Download audio file"
 msgstr "下载音频文件"
 
-#: ../audio-player.php:531
+#: ../audio-player.php:545
 #, php-format
 msgid "Audio clip: Adobe Flash Player (version 9 or above) is required to play this audio clip. Download the latest version <a href=\"%s\" title=\"Download Adobe Flash Player\">here</a>. You also need to have JavaScript enabled in your browser."
 msgstr "音频片段：需要 Adobe Flash Player（9 或以上版本）播放音频片段。 点击<a href=\"%s\" title=\"下载 Adobe Flash Player\">这里</a>下载最新版本。您需要开启浏览器的 JavaScript 支持。"
@@ -317,12 +317,10 @@ msgid "Choose this to use your own alternative content for all player instances.
 msgstr "如果您想用自定义内容来替换播放器，请选择此项。通过此项，您可以告诉订阅者他们可以到您博客的文章中聆听您的音频文件。"
 
 #: ../php/options-panel.php:211
-#, fuzzy
 msgid "Alternate content for feeds"
 msgstr "feed 替换选项"
 
 #: ../php/options-panel.php:219
-#, fuzzy
 msgid "Custom alternate content"
 msgstr "自定义替换内容"
 
@@ -400,4 +398,13 @@ msgstr "如果您选择此项，您的 mp3 文件的 URLs 将会被加密。这�
 #: ../php/options-panel.php:289
 msgid "Encode mp3 URLs"
 msgstr "加密 mp3 URLs"
+
+#: ../php/options-panel.php:302
+#: ../php/options-panel.php:310
+msgid "Remove all enclosures from feeds"
+msgstr ""
+
+#: ../php/options-panel.php:304
+msgid "This will remove all enclosures from your blog feeds. Only do this if you do not want your visitors to download the mp3 files. Do not do this if you do any kind of podcasting via your blog."
+msgstr ""
 
