@@ -29,6 +29,8 @@ Related links:
 
 == Installation ==
 
+To install the plugin manually:
+
 1. Extract the contents of the archive (zip file)
 2. Upload the audio-player folder to your '/wp-content/plugins' folder
 3. Activate the plugin through the Plugins section in your WordPress admin
@@ -44,9 +46,11 @@ Upgrading from 1.2.3 to 2.0: The plugins/audio-player.php file is no longer need
 == Changelog ==
 
 = 2.0.3.1 =
+
 * Fixed path to plugins folder (in case plugins are stored in a non-standard place)
 
 = 2.0.3 =
+
 * Play button now points to the left in RTL layout
 * Alternate content is now hidden before player loads
 * Fixed Spanish translation file problem
@@ -55,10 +59,12 @@ Upgrading from 1.2.3 to 2.0: The plugins/audio-player.php file is no longer need
 * Fixed an issue with migrating the transparent background option to version 2.x
 
 = 2.0.2 =
+
 * Updated SWFObject to version 2.2
 * Added translation files for German and Spanish
 
 = 2.0.1 =
+
 * Fixed a bug where custom track titles were being ignored
 
 == Frequently Asked Questions ==
