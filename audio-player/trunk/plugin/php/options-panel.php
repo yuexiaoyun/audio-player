@@ -64,7 +64,7 @@
 		<h3><?php _e('Default audio folder location', $this->textDomain) ?></h3>
 		<p>
 			<select name="ap_audiowebpath_iscustom" id="ap_audiowebpath_iscustom">
-				<option value="false"<?php if (!$this->isCustomAudioRoot) echo(' selected="selected"') ?>><?php echo get_settings('siteurl') ?> </option>
+				<option value="false"<?php if (!$this->isCustomAudioRoot) echo(' selected="selected"') ?>><?php echo get_option('siteurl') ?> </option>
 				<option value="true"<?php if ($this->isCustomAudioRoot) echo(' selected="selected"') ?>><?php _e('Custom', $this->textDomain) ?></option>
 			</select>
 			<input type="text" id="ap_audiowebpath" name="ap_audiowebpath" size="40" value="<?php echo $this->options["audioFolder"] ?>" />

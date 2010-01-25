@@ -314,7 +314,7 @@ if (!class_exists('AudioPlayer')) {
 				$this->audioAbsPath = preg_replace('/[\\\\\/]+/', $sysDelimiter, ABSPATH . $this->audioRoot);
 		
 				$this->isCustomAudioRoot = false;
-				$this->audioRoot = get_settings('siteurl') . $this->audioRoot;
+				$this->audioRoot = get_option('siteurl') . $this->audioRoot;
 			}
 		}
 		
@@ -568,7 +568,7 @@ if (!class_exists('AudioPlayer')) {
 		 * Handles submitted options (validates and saves modified options)
 		 */
 		function optionsPanelAction() {
-			if( $_POST['AudioPlayerReset'] == "1" ) {
+			if( isset($_POST['AudioPlayerReset']) && $_POST['AudioPlayerReset'] == "1" ) {
 				if( function_exists('current_user_can') && !current_user_can('manage_options') ) {
 					wp_die(__('You do not have sufficient permissions to access this page.'));
 				}
@@ -580,7 +580,7 @@ if (!class_exists('AudioPlayer')) {
 				$goback = add_query_arg("updated", "true", "options-general.php?page=" . $this->optionsPageName);
 				wp_redirect($goback);
 				exit();
-			} else 	if( $_POST['AudioPlayerSubmit'] ) {
+			} else 	if( isset($_POST['AudioPlayerSubmit']) ) {
 				if( function_exists('current_user_can') && !current_user_can('manage_options') ) {
 					wp_die(__('You do not have sufficient permissions to access this page.'));
 				}
@@ -880,7 +880,10 @@ if (!class_exists('AudioPlayer')) {
 
 // Instantiate the class
 if (class_exists('AudioPlayer')) {
-	$AudioPlayer = new AudioPlayer();
+	global $AudioPlayer;
+	if (!isset($AudioPlayer)) {
+		$AudioPlayer = new AudioPlayer();
+	}
 }
 
 /**
