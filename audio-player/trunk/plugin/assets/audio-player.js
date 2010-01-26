@@ -43,9 +43,6 @@ var AudioPlayer = function () {
 		embed: function (elementID, options) {
 			var instanceOptions = {};
 			var key;
-			var so;
-			var bgcolor;
-			var wmode;
 			
 			var flashParams = {};
 			var flashVars = {};
