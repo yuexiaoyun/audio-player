@@ -3,7 +3,7 @@
 Plugin Name: Audio player
 Plugin URI: http://wpaudioplayer.com
 Description: Audio Player is a highly configurable but simple mp3 player for all your audio needs. You can customise the player's colour scheme to match your blog theme, have it automatically show track information from the encoded ID3 tags and more. Go to your Settings page to start configuring it.
-Version: 2.0.3.1
+Version: 2.0.3.2
 Author: Martin Laine
 Author URI: http://www.1pixelout.net
 
@@ -45,7 +45,7 @@ if (!class_exists('AudioPlayer')) {
 		// Name for serialized options saved in database
 		var $optionsName = "AudioPlayer_options";
 		
-		var $version = "2.0.3.1";
+		var $version = "2.0.3.2";
 		
 		var $docURL = "http://wpaudioplayer.com/";
 		
@@ -712,11 +712,11 @@ if (!class_exists('AudioPlayer')) {
 		 * Output necessary stuff to WP head section
 		 */
 		function addHeaderCode() {
-			echo '<script type="text/javascript" src="' . $this->pluginURL . '/assets/audio-player.js?ver=@buildNumber@"></script>';
+			echo '<script type="text/javascript" src="' . $this->pluginURL . '/assets/audio-player.js?ver=' . $this->version . '"></script>';
 			echo "\n";
 			echo '<script type="text/javascript">';
 			$jsFormattedOptions = $this->php2js($this->getPlayerOptions());
-			echo 'AudioPlayer.setup("' . $this->playerURL . '?ver=@buildNumber@", ' . $jsFormattedOptions . ');';
+			echo 'AudioPlayer.setup("' . $this->playerURL . '?ver=' . $this->version . '", ' . $jsFormattedOptions . ');';
 			echo '</script>';
 			echo "\n";
 		}
@@ -741,7 +741,7 @@ if (!class_exists('AudioPlayer')) {
 		 * Override media-upload script to handle Audio Player inserts from media library
 		 */
 		function overrideMediaUpload() {
-			echo '<script type="text/javascript" src="' . $this->pluginURL . '/assets/media-upload.js?ver=@buildNumber@"></script>';
+			echo '<script type="text/javascript" src="' . $this->pluginURL . '/assets/media-upload.js?ver=' . $this->version . '"></script>';
 			echo "\n";
 		}
 		
@@ -750,28 +750,28 @@ if (!class_exists('AudioPlayer')) {
 		 */
 		function addAdminHeaderCode() {
 			global $wp_version;
-			echo '<link href="' . $this->pluginURL . '/assets/audio-player-admin.css?ver=@buildNumber@" rel="stylesheet" type="text/css" />';
+			echo '<link href="' . $this->pluginURL . '/assets/audio-player-admin.css?ver=' . $this->version . '" rel="stylesheet" type="text/css" />';
 			echo "\n";
-			echo '<link href="' . $this->pluginURL . '/assets/cpicker/colorpicker.css?ver=@buildNumber@" rel="stylesheet" type="text/css" />';
+			echo '<link href="' . $this->pluginURL . '/assets/cpicker/colorpicker.css?ver=' . $this->version . '" rel="stylesheet" type="text/css" />';
 			echo "\n";
 			
 			// Include jquery library if we are not running WP 2.5 or above
 			if (version_compare($wp_version, "2.5", "<")) {
-				echo '<script type="text/javascript" src="' . $this->pluginURL . '/assets/lib/jquery.js?ver=@buildNumber@"></script>';
+				echo '<script type="text/javascript" src="' . $this->pluginURL . '/assets/lib/jquery.js?ver=' . $this->version . '"></script>';
 				echo "\n";
 			}
 
-			echo '<script type="text/javascript" src="' . $this->pluginURL . '/assets/cpicker/colorpicker.js?ver=@buildNumber@"></script>';
+			echo '<script type="text/javascript" src="' . $this->pluginURL . '/assets/cpicker/colorpicker.js?ver=' . $this->version . '"></script>';
 			echo "\n";
-			echo '<script type="text/javascript" src="' . $this->pluginURL . '/assets/audio-player-admin.js?ver=@buildNumber@"></script>';
+			echo '<script type="text/javascript" src="' . $this->pluginURL . '/assets/audio-player-admin.js?ver=' . $this->version . '"></script>';
 			echo "\n";
-			echo '<script type="text/javascript" src="' . $this->pluginURL . '/assets/audio-player.js?ver=@buildNumber@"></script>';
+			echo '<script type="text/javascript" src="' . $this->pluginURL . '/assets/audio-player.js?ver=' . $this->version . '"></script>';
 			echo "\n";
 			echo '<script type="text/javascript">';
 			echo "\n";
 			echo 'var ap_ajaxRootURL = "' . $this->pluginURL . '/php/";';
 			echo "\n";
-			echo 'AudioPlayer.setup("' . $this->playerURL . '?ver=@buildNumber@", ' . $this->php2js($this->getPlayerOptions()) . ');';
+			echo 'AudioPlayer.setup("' . $this->playerURL . '?ver=' . $this->version . '", ' . $this->php2js($this->getPlayerOptions()) . ');';
 			echo "\n";
 			echo '</script>';
 			echo "\n";

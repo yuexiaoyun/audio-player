@@ -85,8 +85,6 @@
 			</fileset>
 		</copy>
 		
-		<replace dir="${build.dir}" includes="**/*.php" token="@buildNumber@" value="${timestamp}"/>
-		
 		<!-- Concatenate swfobject library and audio-player.js -->
 		<concat destfile="${build.dir}/assets/audio-player.js">
 			<filelist dir="${plugin.src.dir}/assets" files="lib/swfobject.js,audio-player.js"/>
