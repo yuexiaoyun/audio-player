@@ -65,7 +65,7 @@ class Application
 		demomode:false,
 		bufferTime:5,
 		volume:60,
-		rtl:true
+		rtl:false
 	};
 	
 	// A list for javascript listeners
