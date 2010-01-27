@@ -1,4 +1,4 @@
-﻿class Control extends MovieClip
+class Control extends MovieClip
 {
 	public var play_mc:MovieClip;
 	public var pause_mc:MovieClip;
@@ -80,8 +80,9 @@
 		this.background_mc._rotation = 180;
 		this.background_mc._y = this.background_mc._height;
 		this.background_mc._x = this.background_mc._width;
-		this.play_mc._rotation = 180;
-		this.play_mc._y += this.play_mc._height;
+		//this.play_mc._rotation = 180;
+		//this.play_mc._y += this.play_mc._height;
+		this.play_mc._x = 14;
 		this.pause_mc._x = 13;
 	}
 }
