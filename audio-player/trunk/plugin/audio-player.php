@@ -158,6 +158,8 @@ if (!class_exists('AudioPlayer')) {
 				add_filter("rss_enclosure", array(&$this, "removeEnclosures"));
 				add_filter("atom_enclosure", array(&$this, "removeEnclosures"));
 			}
+			
+			add_shortcode("audio", array(&$this, "insertPlayer"));
 		}
 		
 		/**
@@ -166,6 +168,12 @@ if (!class_exists('AudioPlayer')) {
 		 */
 		function removeEnclosures() {
 			return "";
+		}
+		
+		function insertFromShortcode($atts) {
+			echo '<pre>';
+			print_r($atts);
+			echo '</pre>';
 		}
 		
 		/**
@@ -383,13 +391,13 @@ if (!class_exists('AudioPlayer')) {
 			// Replace mp3 links (don't do this in feeds and excerpts)
 			if ( !is_feed() && !$this->inExcerpt && in_array( "links", $this->options["behaviour"] ) ) {
 				$pattern = "/<a ([^=]+=['\"][^\"']+['\"] )*href=['\"](([^\"']+\.mp3))['\"]( [^=]+=['\"][^\"']+['\"])*>([^<]+)<\/a>/i";
-				$content = preg_replace_callback( $pattern, array(&$this, "insertPlayer"), $content );
+				$content = preg_replace_callback( $pattern, array(&$this, "parseCallback"), $content );
 			}
 			
 			// Replace [audio syntax]
 			if( in_array( "default", $this->options["behaviour"] ) ) {
 				$pattern = "/(<p>)?\[audio:(([^]]+))\](<\/p>)?/i";
-				$content = preg_replace_callback( $pattern, array(&$this, "insertPlayer"), $content );
+				$content = preg_replace_callback( $pattern, array(&$this, "parseCallback"), $content );
 			}
 		
 			// Enclosure integration (don't do this for feeds, excerpts and comments)
@@ -424,10 +432,22 @@ if (!class_exists('AudioPlayer')) {
 		 * @return string to replace matches with
 		 * @param $matches Array
 		 */
-		function insertPlayer($matches) {
-			// Split options
-			$data = preg_split("/[\|]/", $matches[3]);
-			
+		function parseCallback($matches) {
+			$atts = explode("|", $matches[3]);
+			$data[0] = $atts[0];
+			for ($i = 1; $i < count($atts); $i++) {
+				$pair = explode("=", $atts[$i]);
+				$data[trim($pair[0])] = trim($pair[1]);
+			}
+			return $this->insertPlayer($data);
+		}
+		
+		/**
+		 * Inserts player
+		 * @return string to replace matches with
+		 * @param $data Array
+		 */
+		function insertPlayer($data) {
 			$files = array();
 			
 			// Alternate content for excerpts (don't do this for feeds)
@@ -482,14 +502,10 @@ if (!class_exists('AudioPlayer')) {
 			}
 		
 			// Build runtime options array
-			$playerOptions = array();
-			for ($i = 1; $i < count($data); $i++) {
-				$pair = explode("=", $data[$i]);
-				$playerOptions[trim($pair[0])] = trim($pair[1]);
-			}
+			array_splice($data, 0, 1);
 			
 			// Return player instance code
-			return $this->getPlayer( implode( ",", $files ), $playerOptions, $actualFile );
+			return $this->getPlayer( implode( ",", $files ), $data, $actualFile );
 		}
 		
 		/**
@@ -545,9 +561,12 @@ if (!class_exists('AudioPlayer')) {
 					$playerCode = '<p class="audioplayer_container"><span style="display:block;padding:5px;border:1px solid #dddddd;background:#f8f8f8" id="' . $playerElementID . '">' . sprintf(__('Audio clip: Adobe Flash Player (version 9 or above) is required to play this audio clip. Download the latest version <a href="%s" title="Download Adobe Flash Player">here</a>. You also need to have JavaScript enabled in your browser.', $this->textDomain), 'http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash&amp;promoid=BIOW') . '</span></p>';
 				}
 				
-				$this->footerCode .= 'AudioPlayer.embed("' . $playerElementID . '", ' . $this->php2js($playerOptions) . ');';
-				$this->footerCode .= "\n";
-
+				$playerCode .= '<script type="text/javascript">';
+				//$this->footerCode .= 'AudioPlayer.embed("' . $playerElementID . '", ' . $this->php2js($playerOptions) . ');';
+				//$this->footerCode .= "\n";
+				$playerCode .= 'AudioPlayer.embed("' . $playerElementID . '", ' . $this->php2js($playerOptions) . ');';
+				$playerCode .= '</script>';
+				
 				return $playerCode;
 			}
 		}
