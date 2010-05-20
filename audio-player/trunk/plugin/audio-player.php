@@ -3,7 +3,7 @@
 Plugin Name: Audio player
 Plugin URI: http://wpaudioplayer.com
 Description: Audio Player is a highly configurable but simple mp3 player for all your audio needs. You can customise the player's colour scheme to match your blog theme, have it automatically show track information from the encoded ID3 tags and more. Go to your Settings page to start configuring it.
-Version: 2.0.4.1
+Version: 2.1
 Author: Martin Laine
 Author URI: http://www.1pixelout.net
 
@@ -45,7 +45,7 @@ if (!class_exists('AudioPlayer')) {
 		// Name for serialized options saved in database
 		var $optionsName = "AudioPlayer_options";
 		
-		var $version = "2.0.4.1";
+		var $version = "2.1";
 		
 		var $docURL = "http://wpaudioplayer.com/";
 		
@@ -124,6 +124,10 @@ if (!class_exists('AudioPlayer')) {
 			$this->pluginPath = WP_PLUGIN_DIR . "/" . plugin_basename(dirname(__FILE__));
 			$this->pluginURL = WP_PLUGIN_URL . "/" . plugin_basename(dirname(__FILE__));
 			
+			if ($_SERVER["HTTPS"] == "on" || $_SERVER["SERVER_PORT_SECURE"] == "1") {
+				$this->pluginURL = str_replace("http", "https", $this->pluginURL);
+			}
+			
 			$this->playerURL = $this->pluginURL . "/assets/player.swf";
 			
 			// Load options
@@ -168,12 +172,6 @@ if (!class_exists('AudioPlayer')) {
 		 */
 		function removeEnclosures() {
 			return "";
-		}
-		
-		function insertFromShortcode($atts) {
-			echo '<pre>';
-			print_r($atts);
-			echo '</pre>';
 		}
 		
 		/**
