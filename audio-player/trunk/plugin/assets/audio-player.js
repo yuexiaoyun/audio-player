@@ -1,6 +1,7 @@
 var AudioPlayer = function () {
 	var instances = [];
-	var activePlayerID;
+	var groups = {};
+	var activePlayers = {};
 	var playerURL = "";
 	var defaultOptions = {};
 	var currentVolume = -1;
@@ -83,23 +84,36 @@ var AudioPlayer = function () {
 			swfobject.embedSWF(playerURL, elementID, instanceOptions.width.toString(), "24", requiredFlashVersion, false, flashVars, flashParams, flashAttributes);
 			
 			instances.push(elementID);
+			
+			if (options.group) {
+				groups[elementID] = options.group;
+			}
 		},
 		
 		syncVolumes: function (playerID, volume) {	
+			if (groups[playerID]) return;
 			currentVolume = volume;
 			for (var i = 0; i < instances.length; i++) {
-				if (instances[i] != playerID) {
+				if (!groups[instances[i]] && instances[i] != playerID) {
 					getPlayer(instances[i]).setVolume(currentVolume);
 				}
 			}
 		},
 		
 		activate: function (playerID, info) {
-			if (activePlayerID && activePlayerID != playerID) {
-				getPlayer(activePlayerID).close();
+			for (var activePlayerID in activePlayers) {
+				if (activePlayerID == playerID) {
+					continue;
+				}
+				if (groups[playerID] != groups[activePlayerID]) {
+					this.close(activePlayerID);
+					continue;
+				}
+				if (!(groups[playerID] || groups[activePlayerID])) {
+					this.close(activePlayerID);
+				}
 			}
-
-			activePlayerID = playerID;
+			activePlayers[playerID] = 1;
 		},
 		
 		load: function (playerID, soundFile, titles, artists) {
@@ -108,8 +122,8 @@ var AudioPlayer = function () {
 		
 		close: function (playerID) {
 			getPlayer(playerID).close();
-			if (playerID == activePlayerID) {
-				activePlayerID = null;
+			if (playerID in activePlayers) {
+				delete activePlayers[playerID];
 			}
 		},
 		
