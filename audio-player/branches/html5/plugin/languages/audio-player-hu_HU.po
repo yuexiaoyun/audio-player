@@ -1,9 +1,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Audio player 2.0.3.1\n"
-"POT-Creation-Date: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-10-06 09:51-0000\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Gergely Nagy <gnagy@mailbox.hu>\n"
+"Last-Translator: Martin Laine <martin.laine@uk.mediacontacts.com>\n"
 "Language-Team: Gergely Nagy\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -12,20 +13,16 @@ msgstr ""
 "X-Poedit-Language: Hungarian\n"
 "X-Poedit-Country: HUNGARY\n"
 
-#: ../audio-player.php:178
-msgid "Settings"
-msgstr "Beállítások"
-
-#: ../audio-player.php:219
-#: ../audio-player.php:220
+#: ../audio-player.php:239
+#: ../audio-player.php:240
 msgid "[Audio clip: view full post to listen]"
 msgstr "[Hanganyag: meghallgatható a teljes bejegyzésben]"
 
-#: ../audio-player.php:510
+#: ../audio-player.php:539
 msgid "Download audio file"
 msgstr "Hanganyag letöltése"
 
-#: ../audio-player.php:529
+#: ../audio-player.php:558
 #, php-format
 msgid "Audio clip: Adobe Flash Player (version 9 or above) is required to play this audio clip. Download the latest version <a href=\"%s\" title=\"Download Adobe Flash Player\">here</a>. You also need to have JavaScript enabled in your browser."
 msgstr "Hanganyag: a lejátszáshoz Adobe Flash Player (9-es vagy újabb verzió) szükséges, amelynek a legfrissebb változata letölthető <a href=\"%s\" title=\"Adobe Flash Player letöltése\">innen</a>, valamint a böngészőben engedélyezni kell a JavaScriptet is."
@@ -392,3 +389,14 @@ msgstr "Ezzel engedélyezhetjük az mp3 fájlokra mutató URL-ek kódolását. E
 msgid "Encode mp3 URLs"
 msgstr "Az mp3 URL-ek kódolása"
 
+#: ../php/options-panel.php:302
+#: ../php/options-panel.php:310
+msgid "Remove all enclosures from feeds"
+msgstr ""
+
+#: ../php/options-panel.php:304
+msgid "This will remove all enclosures from your blog feeds. Only do this if you do not want your visitors to download the mp3 files. Do not do this if you do any kind of podcasting via your blog."
+msgstr ""
+
+#~ msgid "Settings"
+#~ msgstr "Beállítások"

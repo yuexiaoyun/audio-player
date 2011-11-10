@@ -19,8 +19,66 @@ var AudioPlayer = function () {
 		return document.all ? window[playerID] : document[playerID];
 	}
 	
-	function addListener (playerID, type, func) {
+	function addListener(playerID, type, func) {
 		getPlayer(playerID).addListener(type, func);
+	}
+	
+	function decode64(instr) {
+		instr = instr.replace(/[^A-Za-z0-9\+\/\=]/g, "");
+		var keystr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+		var outstr = '', i = 0, l = instr.length, chr1, chr2, chr3, enc1, enc2, enc3, enc4;
+		while (i < l) {
+			enc1 = keystr.indexOf(instr.charAt(i++));
+			enc2 = keystr.indexOf(instr.charAt(i++));
+			enc3 = keystr.indexOf(instr.charAt(i++));
+			enc4 = keystr.indexOf(instr.charAt(i++));
+			chr1 = (enc1 << 2) | (enc2 >> 4);
+			chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
+			chr3 = ((enc3 & 3) << 6) | enc4;
+			outstr+=String.fromCharCode(chr1);
+			if (enc3 != 64) outstr+=String.fromCharCode(chr2);
+			if (enc4 != 64) outstr+=String.fromCharCode(chr3);
+		}
+		return outstr.replace(/\x00+$/, '');
+	}
+	
+	function checkWebAudio() {
+		var a = document.createElement("audio");
+		return a && a.canPlayType && (a.canPlayType('audio/mpeg') != "");
+	}
+	
+	function getCallback(o, options) {
+		return function (e) {
+			return embedCallback.apply(o, [e, options]);
+		}
+	}
+	
+	function embedCallback (result, options) {
+		if (!result.success && checkWebAudio()) {
+			var toReplace = document.getElementById(result.id);
+			toReplace.parentNode.replaceChild(buildAudioTag(options), toReplace);
+		}
+	}
+	
+	function buildAudioTag(options) {
+		var a = document.createElement("audio");
+		a.setAttribute("src", encodeURI(options.soundFile));
+		a.setAttribute("controls", "controls");
+		if (options.autostart == "yes") {
+			a.setAttribute("autoplay", "autoplay")
+		}
+		if (options.loop == "yes") {
+			a.setAttribute("loop", "loop")
+		}
+		a.style.width = options.width + "px";
+		if (options.bgcolor) {
+			a.style.backgroundColor = "#" + options.bgcolor;
+		}
+		if (options.initialvolume) {
+			a.volume = options.initialvolume / 100;
+		}
+		
+		return  a;
 	}
 	
 	return {
@@ -81,7 +139,7 @@ var AudioPlayer = function () {
 			
 			flashVars.playerID = elementID;
 			
-			swfobject.embedSWF(playerURL, elementID, instanceOptions.width.toString(), "24", requiredFlashVersion, false, flashVars, flashParams, flashAttributes);
+			swfobject.embedSWF(playerURL, elementID, instanceOptions.width.toString(), "24", requiredFlashVersion, false, flashVars, flashParams, flashAttributes, getCallback(this, instanceOptions));
 			
 			instances.push(elementID);
 			

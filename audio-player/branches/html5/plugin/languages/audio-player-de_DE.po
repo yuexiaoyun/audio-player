@@ -6,10 +6,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: audio-player\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2008-08-25 22:14+0000\n"
-"PO-Revision-Date: 2010-01-18 11:12-0000\n"
-"Last-Translator: Martin Laine <martin@1pixelout.net>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-10-06 09:51-0000\n"
+"PO-Revision-Date: 2011-10-06 09:55-0000\n"
+"Last-Translator: Martin Laine <martin.laine@uk.mediacontacts.com>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,20 +17,16 @@ msgstr ""
 "X-Launchpad-Export-Date: 2010-01-04 17:12+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#: ../audio-player.php:193
-msgid "Settings"
-msgstr "Einstellungen"
-
-#: ../audio-player.php:234
-#: ../audio-player.php:235
+#: ../audio-player.php:239
+#: ../audio-player.php:240
 msgid "[Audio clip: view full post to listen]"
 msgstr "[Audio-Clip: schaue ganze Text an um zu hören]"
 
-#: ../audio-player.php:526
+#: ../audio-player.php:539
 msgid "Download audio file"
 msgstr "Audio-Datei herunterladen"
 
-#: ../audio-player.php:545
+#: ../audio-player.php:558
 #, php-format
 msgid "Audio clip: Adobe Flash Player (version 9 or above) is required to play this audio clip. Download the latest version <a href=\"%s\" title=\"Download Adobe Flash Player\">here</a>. You also need to have JavaScript enabled in your browser."
 msgstr "Musikvideo: Adobe Flash Player (Version 9 oder höher) wird benötigt um dieses Musikvideo abzuspielen. Die aktuellste Version steht <a href=\"%s\" title=\"Download Adobe Flash Player\">hier</a> zum herunterladen bereit. Außerdem muss JavaScript in Ihrem Browser aktiviert sein."
@@ -406,3 +402,5 @@ msgstr ""
 msgid "This will remove all enclosures from your blog feeds. Only do this if you do not want your visitors to download the mp3 files. Do not do this if you do any kind of podcasting via your blog."
 msgstr ""
 
+#~ msgid "Settings"
+#~ msgstr "Einstellungen"

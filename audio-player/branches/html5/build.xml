@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<project name="Audio Player" basedir="." default="deploy.default">
+<project name="Audio Player" basedir="." default="deploy.standalone">
 	<!-- Load properties -->
 	<property file="build.properties"/>
 	
@@ -61,7 +61,11 @@
 		<delete dir="${deploy.dir}/wp-content/plugins/audio-player"/>
 		<unzip src="${dist.dir}/audio-player.zip" dest="${deploy.dir}/wp-content/plugins" overwrite="true"/>
 	</target>
-
+	
+	<target name="deploy.standalone" depends="build.standalone" description="Deploy standalone">
+		<unzip src="${dist.dir}/audio-player-standalone.zip" dest="${deploy.standalone.dir}" overwrite="true"/>
+	</target>
+	
 	<target name="deploy.wpap" depends="build,build.standalone" description="Deploy to wpaudioplayer.local">
 		<delete dir="${wpap.dir}/wp-content/plugins/audio-player"/>
 		

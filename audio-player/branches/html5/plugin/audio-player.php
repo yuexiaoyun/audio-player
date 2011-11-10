@@ -50,7 +50,6 @@ if (!class_exists('AudioPlayer')) {
 		var $docURL = "http://wpaudioplayer.com/";
 		
 		// Internationalisation
-		var $textDomain = "audio-player";
 		var $languageFileLoaded = false;
 
 		// Various path variables
@@ -215,7 +214,7 @@ if (!class_exists('AudioPlayer')) {
 		 */
 		function loadLanguageFile() {
 			if(!$this->languageFileLoaded) {
-				load_plugin_textdomain($this->textDomain, "wp-content/plugins/audio-player/languages", dirname( plugin_basename( __FILE__ ) ) . "/languages");
+				load_plugin_textdomain('audio-player', "wp-content/plugins/audio-player/languages", dirname( plugin_basename( __FILE__ ) ) . "/languages");
 				$this->languageFileLoaded = true;
 			}
 		}
@@ -237,8 +236,8 @@ if (!class_exists('AudioPlayer')) {
 				"enclosuresAtTop" => false,
 				"flashAlternate" => "",
 				"rssAlternate" => "nothing",
-				"rssCustomAlternate" => __("[Audio clip: view full post to listen]", $this->textDomain),
-				"excerptAlternate" => __("[Audio clip: view full post to listen]", $this->textDomain),
+				"rssCustomAlternate" => __("[Audio clip: view full post to listen]", 'audio-player'),
+				"excerptAlternate" => __("[Audio clip: view full post to listen]", 'audio-player'),
 				"introClip" => "",
 				"outroClip" => "",
 				"initialVolume" => "60",
@@ -537,7 +536,7 @@ if (!class_exists('AudioPlayer')) {
 						for ($i = 0; $i < count($files); $i++) {
 							$fileparts = explode("/", $files[$i]);
 							$fileName = $fileparts[count($fileparts)-1];
-							$links .= '<a href="' . $files[$i] . '">' . __('Download audio file', $this->textDomain) . ' (' . $fileName . ')</a><br />';
+							$links .= '<a href="' . $files[$i] . '">' . __('Download audio file', 'audio-player') . ' (' . $fileName . ')</a><br />';
 						}
 						return $links;
 						break;
@@ -556,7 +555,7 @@ if (!class_exists('AudioPlayer')) {
 				if (strlen($this->options["flashAlternate"]) > 0) {
 					$playerCode = str_replace(array("%playerID%", "%downloadURL%"), array($playerElementID, $actualFile), $this->options["flashAlternate"]);
 				} else {
-					$playerCode = '<p class="audioplayer_container"><span style="display:block;padding:5px;border:1px solid #dddddd;background:#f8f8f8" id="' . $playerElementID . '">' . sprintf(__('Audio clip: Adobe Flash Player (version 9 or above) is required to play this audio clip. Download the latest version <a href="%s" title="Download Adobe Flash Player">here</a>. You also need to have JavaScript enabled in your browser.', $this->textDomain), 'http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash&amp;promoid=BIOW') . '</span></p>';
+					$playerCode = '<p class="audioplayer_container"><span style="display:block;padding:5px;border:1px solid #dddddd;background:#f8f8f8" id="' . $playerElementID . '">' . sprintf(__('Audio clip: Adobe Flash Player (version 9 or above) is required to play this audio clip. Download the latest version <a href="%s" title="Download Adobe Flash Player">here</a>. You also need to have JavaScript enabled in your browser.', 'audio-player'), 'http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash&amp;promoid=BIOW') . '</span></p>';
 				}
 				
 				$playerCode .= '<script type="text/javascript">';
