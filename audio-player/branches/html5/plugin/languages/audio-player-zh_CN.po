@@ -9,30 +9,26 @@ msgid ""
 msgstr ""
 "Project-Id-Version: audio-player\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-25 22:14+0000\n"
-"PO-Revision-Date: 2010-01-18 11:12-0000\n"
-"Last-Translator: Martin Laine <martin@1pixelout.net>\n"
+"POT-Creation-Date: 2011-10-06 09:51-0000\n"
+"PO-Revision-Date: 2011-10-06 09:56-0000\n"
+"Last-Translator: Martin Laine <martin.laine@uk.mediacontacts.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2010-01-06 10:56+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#: ../audio-player.php:193
-msgid "Settings"
-msgstr "设置"
-
-#: ../audio-player.php:234
-#: ../audio-player.php:235
+#: ../audio-player.php:239
+#: ../audio-player.php:240
 msgid "[Audio clip: view full post to listen]"
 msgstr "[音频片段：您需要阅读全文以聆听此片段]"
 
-#: ../audio-player.php:526
+#: ../audio-player.php:539
 msgid "Download audio file"
 msgstr "下载音频文件"
 
-#: ../audio-player.php:545
+#: ../audio-player.php:558
 #, php-format
 msgid "Audio clip: Adobe Flash Player (version 9 or above) is required to play this audio clip. Download the latest version <a href=\"%s\" title=\"Download Adobe Flash Player\">here</a>. You also need to have JavaScript enabled in your browser."
 msgstr "音频片段：需要 Adobe Flash Player（9 或以上版本）播放音频片段。 点击<a href=\"%s\" title=\"下载 Adobe Flash Player\">这里</a>下载最新版本。您需要开启浏览器的 JavaScript 支持。"
@@ -408,3 +404,5 @@ msgstr ""
 msgid "This will remove all enclosures from your blog feeds. Only do this if you do not want your visitors to download the mp3 files. Do not do this if you do any kind of podcasting via your blog."
 msgstr ""
 
+#~ msgid "Settings"
+#~ msgstr "设置"

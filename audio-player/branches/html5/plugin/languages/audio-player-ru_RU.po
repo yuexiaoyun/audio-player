@@ -1,12 +1,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Audio Player\n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: 2010-04-14 13:41-0000\n"
-"Last-Translator: Martin Laine <martin@1pixelout.net>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-10-06 09:51-0000\n"
+"PO-Revision-Date: 2011-10-06 09:56-0000\n"
+"Last-Translator: Martin Laine <martin.laine@uk.mediacontacts.com>\n"
 "Language-Team: http://chernobog.ru <admin@chernobog.ru>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Country: RUSSIA\n"
 "X-Poedit-Language: Russian\n"
@@ -15,20 +16,16 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../audio-player.php:193
-msgid "Settings"
-msgstr "Настройки"
-
-#: ../audio-player.php:234
-#: ../audio-player.php:235
+#: ../audio-player.php:239
+#: ../audio-player.php:240
 msgid "[Audio clip: view full post to listen]"
 msgstr "[Аудиозапись: посмотреть полное сообщение для прослушивания]"
 
-#: ../audio-player.php:526
+#: ../audio-player.php:539
 msgid "Download audio file"
 msgstr "Скачать аудио файл"
 
-#: ../audio-player.php:545
+#: ../audio-player.php:558
 #, php-format
 msgid "Audio clip: Adobe Flash Player (version 9 or above) is required to play this audio clip. Download the latest version <a href=\"%s\" title=\"Download Adobe Flash Player\">here</a>. You also need to have JavaScript enabled in your browser."
 msgstr "Аудиозапись: Adobe Flash Player (версия 9 или выше) требуется для воспроизведения этой аудиозаписи. Скачать последнюю версию <a href=\"%s\" title=\"Download Adobe Flash Player\">здесь</a>. К тому же, в Вашем браузере должен быть включен JavaScript."
@@ -404,3 +401,5 @@ msgstr "Удалить все вложения из каналов RSS"
 msgid "This will remove all enclosures from your blog feeds. Only do this if you do not want your visitors to download the mp3 files. Do not do this if you do any kind of podcasting via your blog."
 msgstr "Это позволит удалить все вложения из каналов RSS Вашего блога. Делайте это только в том случае, когда не хотите чтобы Ваши посетители скачивали mp3-файлы. Не включайте этот параметр, если у Вас в блоге настроен подкастинг."
 
+#~ msgid "Settings"
+#~ msgstr "Настройки"
