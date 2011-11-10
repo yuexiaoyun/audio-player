@@ -1,0 +1,12 @@
+deploy.path=
+default.deploy.version=
+flash.exe=
+
+wpap.dir=
+
+dev.svn.url=http://tools.assembla.com/svn/1pixelout/audio-player
+svn.url=http://plugins.svn.wordpress.org/audio-player
+
+ftp.server=
+ftp.path=
+ftp.wpap.path=
