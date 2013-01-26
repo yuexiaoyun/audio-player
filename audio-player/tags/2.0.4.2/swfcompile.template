@@ -1,5 +1,0 @@
-var doc = fl.openDocument("@sourceFile@");
-
-doc.exportSWF("@destFile@", true);
-
-fl.quit(false);
